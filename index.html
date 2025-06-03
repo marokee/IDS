@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <base target="_top">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบงานวิชาการ</title>
+  <base target="_top">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ระบบงานวิชาการ</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    header {
+      background-color: #004a99;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #e0e0e0;
+      padding: 0.5rem;
+    }
+    nav button {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    iframe {
+      width: 100%;
+      height: calc(100vh - 120px); /* เว้นพื้นที่ header+nav */
+      border: none;
+    }
+  </style>
+  <script>
+    const BASE_URL = "https://script.google.com/macros/s/AKfycbwt-vFDAXOPdvIc3S5DXmdKxEwE4wikabLCXdGcAKsiV_zKl2oUOZH23GWyxmPuBCM/exec";
+
+    function loadPage(page = "") {
+      const url = page ? `${BASE_URL}?page=${page}` : BASE_URL;
+      document.getElementById("mainFrame").src = url;
+    }
+
+    document.addEventListener("contextmenu", e => e.preventDefault()); // ปิดคลิกขวา
+  </script>
 </head>
 <body>
-    <iframe style="width: 100%; height: 100vh;" scrolling="yes" src="https://script.google.com/macros/s/AKfycbwt-vFDAXOPdvIc3S5DXmdKxEwE4wikabLCXdGcAKsiV_zKl2oUOZH23GWyxmPuBCM/exec" frameborder="0"></iframe>
-     <iframe style="width: 100%; height: 100vh;" scrolling="yes" src="https://script.google.com/macros/s/AKfycbwt-vFDAXOPdvIc3S5DXmdKxEwE4wikabLCXdGcAKsiV_zKl2oUOZH23GWyxmPuBCM/exec?page=showfile" frameborder="0"></iframe>
+  <header>
+    <h1>ระบบงานวิชาการ</h1>
+  </header>
+
+  <nav>
+    <button onclick="loadPage('')">หน้าแรก</button>
+    <button onclick="loadPage('showfile')">ดูไฟล์</button>
+    <button onclick="loadPage('student')">นักเรียน</button>
+    <button onclick="loadPage('teacher')">ครูผู้สอน</button>
+  </nav>
+
+  <iframe id="mainFrame" src="https://script.google.com/macros/s/AKfycbwt-vFDAXOPdvIc3S5DXmdKxEwE4wikabLCXdGcAKsiV_zKl2oUOZH23GWyxmPuBCM/exec"></iframe>
 </body>
 </html>
+
